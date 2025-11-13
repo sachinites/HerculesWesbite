@@ -27,19 +27,38 @@ export default function InstructorProfile() {
           <div className="grid md:grid-cols-3 gap-8 p-8">
             {/* Profile Image */}
             <div className="flex flex-col items-center space-y-4">
-              <div className="relative">
+              <div className="relative group">
                 <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-50 animate-pulse" />
                 <div className="relative h-48 w-48 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden border-4 border-primary shadow-xl shadow-primary/50">
                   <img 
                     src="https://ik.imagekit.io/sachinites1986/Images/my_pic-removebg.png" 
                     alt="Instructor Profile"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-125"
                   />
                 </div>
               </div>
               <div className="text-center">
-                <h3 className="text-2xl font-bold">Sachin Sharma</h3>
-                <p className="text-muted-foreground">System Programming Expert</p>
+                <h3 className="text-2xl font-bold">Abhishek Sagar</h3>
+                <p className="text-muted-foreground">I Build Networks, 13+ YoE</p>
+                <p className="text-muted-foreground">MTech from IIT-Bombay</p>
+              </div>
+
+              {/* Second Instructor */}
+              <div className="mt-8 pt-8 border-t border-border/50">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-accent rounded-full blur-xl opacity-50 animate-pulse" />
+                  <div className="relative h-48 w-48 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center overflow-hidden border-4 border-accent shadow-xl shadow-accent/50">
+                    <img 
+                      src="https://ik.imagekit.io/sachinites1986/Images/Shivani-LinkedIn-Profile-Pic.jpeg" 
+                      alt="Dr. Shivani Nigam Profile"
+                      className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-125"
+                    />
+                  </div>
+                </div>
+                <div className="text-center mt-4">
+                  <h3 className="text-2xl font-bold">Dr. Shivani Nigam</h3>
+                  <p className="text-muted-foreground">Marketing Specialist</p>
+                </div>
               </div>
             </div>
 
@@ -48,7 +67,7 @@ export default function InstructorProfile() {
               <div>
                 <h4 className="text-xl font-semibold mb-3">About</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  With over a decade of experience in Linux system programming and computer
+                  With over a 13+ Years of experience in Linux system programming and computer
                   networking, I have worked on building large-scale distributed systems and
                   mentored thousands of students. My courses focus on practical, hands-on
                   learning with real-world projects that prepare you for industry challenges.
@@ -59,12 +78,12 @@ export default function InstructorProfile() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="group text-center p-4 rounded-lg bg-background/50 border-2 border-primary/30 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/30 hover:scale-105">
                   <Users className="h-8 w-8 mx-auto mb-2 text-primary group-hover:scale-110 transition-transform" />
-                  <div className="text-2xl font-bold">10K+</div>
+                  <div className="text-2xl font-bold">52K+</div>
                   <div className="text-sm text-muted-foreground">Students</div>
                 </div>
                 <div className="group text-center p-4 rounded-lg bg-background/50 border-2 border-chart-2/30 hover:border-chart-2 transition-all hover:shadow-lg hover:shadow-chart-2/30 hover:scale-105">
                   <BookOpen className="h-8 w-8 mx-auto mb-2 text-chart-2 group-hover:scale-110 transition-transform" />
-                  <div className="text-2xl font-bold">15+</div>
+                  <div className="text-2xl font-bold">25+</div>
                   <div className="text-sm text-muted-foreground">Courses</div>
                 </div>
                 <div className="group text-center p-4 rounded-lg bg-background/50 border-2 border-accent/30 hover:border-accent transition-all hover:shadow-lg hover:shadow-accent/30 hover:scale-105">
@@ -74,8 +93,8 @@ export default function InstructorProfile() {
                 </div>
                 <div className="group text-center p-4 rounded-lg bg-background/50 border-2 border-chart-5/30 hover:border-chart-5 transition-all hover:shadow-lg hover:shadow-chart-5/30 hover:scale-105">
                   <Award className="h-8 w-8 mx-auto mb-2 text-chart-5 group-hover:scale-110 transition-transform" />
-                  <div className="text-2xl font-bold">4.8</div>
-                  <div className="text-sm text-muted-foreground">Rating</div>
+                  <div className="text-2xl font-bold">4.5</div>
+                  <div className="text-sm text-muted-foreground">Udemy Rating</div>
                 </div>
               </div>
 
@@ -104,30 +123,54 @@ export default function InstructorProfile() {
               </div>
 
               <div className="flex flex-wrap gap-3 pt-4">
-                <Button size="lg" className="shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/70 transition-all hover:scale-105">
-                  View All Courses
-                </Button>
-                <Button size="lg" variant="secondary" className="shadow-lg shadow-accent/50 hover:shadow-xl hover:shadow-accent/70 transition-all hover:scale-105 border border-accent/50">
-                  Connect on LinkedIn
-                </Button>
+                <a
+                  href="https://www.udemy.com/user/abhishek-sagar-8/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/70 transition-all hover:scale-105">
+                    Visit Udemy Profile
+                  </Button>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/abhishekiit/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" variant="secondary" className="shadow-lg shadow-accent/50 hover:shadow-xl hover:shadow-accent/70 transition-all hover:scale-105 border border-accent/50">
+                    Connect on LinkedIn
+                  </Button>
+                </a>
               </div>
 
               {/* New Action Buttons */}
               <div className="flex flex-wrap gap-3 pt-2">
-                <Button 
-                  size="lg" 
-                  className="bg-chart-2 hover:bg-chart-2/90 text-foreground shadow-[0_0_20px_rgba(100,200,255,0.6)] hover:shadow-[0_0_30px_rgba(100,200,255,0.8)] border-2 border-chart-2/50 hover:border-chart-2 transition-all hover:scale-105"
+                <a
+                  href="https://t.me/telecsepracticals"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Join our Telegram Group
-                </Button>
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-background font-semibold shadow-[0_0_20px_rgba(255,200,0,0.6)] hover:shadow-[0_0_30px_rgba(255,200,0,0.8)] border-2 border-yellow-400/50 hover:border-yellow-300 transition-all hover:scale-105"
+                  <Button 
+                    size="lg" 
+                    className="bg-chart-2 hover:bg-chart-2/90 text-foreground shadow-[0_0_20px_rgba(100,200,255,0.6)] hover:shadow-[0_0_30px_rgba(100,200,255,0.8)] border-2 border-chart-2/50 hover:border-chart-2 transition-all hover:scale-105"
+                  >
+                    <MessageCircle className="h-5 w-5 mr-2" />
+                    Join our Telegram Group
+                  </Button>
+                </a>
+                <a
+                  href="https://www.csepracticals.com/become-affiliate-partner/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <DollarSign className="h-5 w-5 mr-2" />
-                  Make Passive Income with us
-                </Button>
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-background font-semibold shadow-[0_0_20px_rgba(255,200,0,0.6)] hover:shadow-[0_0_30px_rgba(255,200,0,0.8)] border-2 border-yellow-400/50 hover:border-yellow-300 transition-all hover:scale-105"
+                  >
+                    <DollarSign className="h-5 w-5 mr-2" />
+                    Make Passive Income with us
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

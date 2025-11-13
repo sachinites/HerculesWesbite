@@ -35,6 +35,13 @@ export default function Hero() {
   const [codeLines, setCodeLines] = useState<string[]>([]);
   const [counts, setCounts] = useState({ paid: 0, free: 0, hours: 0, reviews: 0 });
 
+  const scrollToCourses = () => {
+    const coursesSection = document.getElementById('courses');
+    if (coursesSection) {
+      coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   useEffect(() => {
     // Animate code typing - continuous loop
     let lineIndex = 0;
@@ -56,7 +63,7 @@ export default function Hero() {
     }, 1000);
 
     // Animate counting stats
-    const targetCounts = { paid: 25, free: 5, hours: 200, reviews: 6332 };
+    const targetCounts = { paid: 22, free: 4, hours: 200, reviews: 6332 };
     const duration = 2000; // 2 seconds
     const steps = 60;
     const increment = {
@@ -256,6 +263,7 @@ export default function Hero() {
                 size="lg" 
                 variant="secondary" 
                 className="border border-amber-500/50 shadow-lg shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/30 transition-all hover:scale-105"
+                onClick={scrollToCourses}
               >
                 View Courses
               </Button>

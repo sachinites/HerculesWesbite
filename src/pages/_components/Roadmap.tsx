@@ -115,7 +115,7 @@ const milestones = [
 
 export default function Roadmap() {
   return (
-    <section id="courses" className="px-4 py-16 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+    <section id="roadmap" className="px-4 py-16 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />

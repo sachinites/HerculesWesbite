@@ -22,13 +22,19 @@ export default function TelegramBanner() {
           </div>
           
           <div>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/70 transition-all hover:scale-105"
+            <a
+              href="https://t.me/telecsepracticals"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <MessageCircle className="h-5 w-5 mr-2" />
-              Join Telegram Group
-            </Button>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/70 transition-all hover:scale-105"
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Join Telegram Group
+              </Button>
+            </a>
           </div>
         </div>
       </div>

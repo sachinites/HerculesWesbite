@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button.tsx";
-import { SignInButton } from "@/components/ui/signin.tsx";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { useAuth } from "@/hooks/use-auth.ts";
 import { UserCircle2, LogOut } from "lucide-react";
@@ -29,11 +28,15 @@ export default function SignInSection() {
           
           <div>
             <Unauthenticated>
-              <SignInButton>
+              <a
+                href="https://www.csepracticals.com/login/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/70 transition-all hover:scale-105">
                   SignIn/SignUp
                 </Button>
-              </SignInButton>
+              </a>
             </Unauthenticated>
             <Authenticated>
               <Button 

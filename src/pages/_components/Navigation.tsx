@@ -9,7 +9,7 @@ export default function Navigation() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setMobileMenuOpen(false);
     }
   };
@@ -26,23 +26,19 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-4 flex items-center space-x-6">
               <button
-                onClick={() => scrollToSection("home")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button
                 onClick={() => scrollToSection("courses")}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Courses
               </button>
-              <button
-                onClick={() => scrollToSection("recent-updates")}
+              <a
+                href="https://www.csepracticals.com/recent-updates/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Recent Updates
-              </button>
+              </a>
 
               {/* Collaborate Dropdown */}
               <div 
@@ -58,26 +54,43 @@ export default function Navigation() {
                 {collaborateOpen && (
                   <div className="absolute top-full pt-2 w-48">
                     <div className="rounded-md bg-popover border border-border shadow-lg">
-                      <a href="#partnerships" className="block px-4 py-2 hover:bg-accent rounded-t-md">
-                        Partnerships
+                      <a 
+                        href="https://www.csepracticals.com/become-affiliate-partner/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent rounded-t-md"
+                      >
+                        Join Affiliate Program
                       </a>
-                      <a href="#guest-lectures" className="block px-4 py-2 hover:bg-accent">
-                        Guest Lectures
+                      <a 
+                        href="https://www.csepracticals.com/cross-sell/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent"
+                      >
+                        Cross-Sell Your Courses
                       </a>
-                      <a href="#contribute" className="block px-4 py-2 hover:bg-accent rounded-b-md">
-                        Contribute Content
+                      <a 
+                        href="https://www.csepracticals.com/advt-my-event/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent rounded-b-md"
+                      >
+                        Advertise My Event On your Platform
                       </a>
                     </div>
                   </div>
                 )}
               </div>
 
-              <button
-                onClick={() => scrollToSection("blogs")}
+              <a
+                href="https://www.csepracticals.com/blog/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Our Blogs
-              </button>
+              </a>
 
               {/* Youtube Playlists Dropdown */}
               <div 
@@ -91,19 +104,119 @@ export default function Navigation() {
                   Youtube Playlists <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 {playlistsOpen && (
-                  <div className="absolute top-full pt-2 w-56">
-                    <div className="rounded-md bg-popover border border-border shadow-lg">
-                      <a href="#linux-programming" className="block px-4 py-2 hover:bg-accent rounded-t-md">
-                        Linux System Programming
+                  <div className="absolute top-full pt-2 w-80">
+                    <div className="rounded-md bg-popover border border-border shadow-lg max-h-96 overflow-y-auto">
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ58FBJobXN-KJ5YCi8KNgSO" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent rounded-t-md text-sm"
+                      >
+                        Network Dev : L3 Routing Table Data Structure
                       </a>
-                      <a href="#networking" className="block px-4 py-2 hover:bg-accent">
-                        Computer Networking
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ4avtTCCzmGeXSrTz-pH7x2" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Network Dev : Construction of L3 Routing Table
                       </a>
-                      <a href="#multithreading" className="block px-4 py-2 hover:bg-accent">
-                        Multithreading in C
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ6hO79_Vw79HP7ju4SoSGKn" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Multithreading : Recursive Mutexes
                       </a>
-                      <a href="#projects" className="block px-4 py-2 hover:bg-accent rounded-b-md">
-                        Project Tutorials
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ7D1O3nCep-3sx9gMosLCcc" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Multithreading : Thread Cancellation
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ5MlzhfYEVS3vtBqRd6Xznt" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Multithreading : POSIX Threading
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ6XzyEsmrv34qwSap98TYXf" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Operating Systems : Heap Memory Management
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ6XuFzsCbP84MNtH_I78Tth" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Multithreading : Semaphores
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ65fDDtjgKvc2RFqA78OykW" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Linux System Programming : Linux Timers
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ5aHJn8qW3x4NCuVcdNhhRD" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Data Structure : Offset of a Linked List
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ67Mru9fNUUb3BThF9dIZOA" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Linux System Programming : IPC - Unix Domain Sockets
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ751TwsaWnppSSs93BJDgqR" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Operating Systems : Stack Memory Management
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ6Kd8U-B9GtWvD5RABWoWci" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Multithreading : Thread Pools
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLN9r3gitIiJ5MYm41p33sNEObe1S-g-cQ" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent text-sm"
+                      >
+                        Operating Systems : select System Call
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/playlist?list=PLlrqp8hxLfoqSIQFrGbAM5lv5uAnZBB61" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-accent rounded-b-md text-sm"
+                      >
+                        Linux System Programming : Device-Drivers Complete Playlist
                       </a>
                     </div>
                   </div>
@@ -149,12 +262,14 @@ export default function Navigation() {
             >
               Courses
             </button>
-            <button
-              onClick={() => scrollToSection("recent-updates")}
+            <a
+              href="https://www.csepracticals.com/recent-updates/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-left px-3 py-2 hover:bg-accent rounded-md"
             >
               Recent Updates
-            </button>
+            </a>
             <button
               onClick={() => scrollToSection("blogs")}
               className="block w-full text-left px-3 py-2 hover:bg-accent rounded-md"

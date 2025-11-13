@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card.tsx";
-import { Button } from "@/components/ui/button.tsx";
-import { ChevronLeft, ChevronRight, Linkedin, Star } from "lucide-react";
+import { Linkedin, Star } from "lucide-react";
 
 interface Review {
   id: number;
@@ -98,25 +96,11 @@ const reviews: Review[] = [
 ];
 
 export default function ReviewSlider() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const reviewsPerSlide = 5;
-  const totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const currentReviews = reviews.slice(
-    currentSlide * reviewsPerSlide,
-    (currentSlide + 1) * reviewsPerSlide
-  );
+  // Duplicate reviews for seamless infinite scroll
+  const duplicatedReviews = [...reviews, ...reviews];
 
   return (
-    <section className="py-12 px-6 bg-background hidden md:block">
+    <section className="py-12 px-6 bg-background hidden md:block overflow-hidden">
       <div className="max-w-full mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-3 text-foreground">
@@ -127,98 +111,63 @@ export default function ReviewSlider() {
           </p>
         </div>
 
-        {/* Reviews Slider */}
+        {/* Continuous Scrolling Reviews */}
         <div className="relative">
-          <div className="grid grid-cols-5 gap-4 min-h-[320px]">
-            {currentReviews.map((review) => (
-              <Card
-                key={review.id}
-                className="group overflow-hidden border-2 border-violet-400/70 hover:border-violet-500 hover:bg-violet-500/5 shadow-violet-400/30 hover:shadow-violet-500/60 transition-all duration-300 hover:shadow-xl flex flex-col"
-              >
-                <CardContent className="p-4 flex flex-col flex-1">
-                  {/* Profile Section */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="relative">
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-violet-500/50"
-                      />
-                      <a
-                        href={review.linkedinUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors shadow-lg"
-                      >
-                        <Linkedin className="w-3 h-3 text-white" />
-                      </a>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-sm text-foreground group-hover:text-violet-400 transition-colors truncate">
-                        {review.name}
-                      </h4>
-                      <p className="text-xs text-muted-foreground truncate">{review.role}</p>
-                      <p className="text-xs text-muted-foreground truncate">{review.company}</p>
-                    </div>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center gap-0.5 mb-2">
-                    {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-                    ))}
-                  </div>
-
-                  {/* Review Text */}
-                  <p className="text-xs text-muted-foreground leading-relaxed flex-1 line-clamp-6">
-                    "{review.review}"
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="h-10 w-10"
+          <div className="overflow-hidden">
+            <div 
+              className="flex gap-4"
+              style={{
+                width: 'fit-content',
+                animation: 'scroll-right 80s linear infinite'
+              }}
             >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
+              {duplicatedReviews.map((review, index) => (
+                <div key={`${review.id}-${index}`} className="flex-shrink-0 w-80">
+                  <Card className="group overflow-hidden border-2 border-violet-400/70 hover:border-violet-500 hover:bg-violet-500/5 shadow-violet-400/30 hover:shadow-violet-500/60 transition-all duration-300 hover:shadow-xl flex flex-col h-full">
+                    <CardContent className="p-4 flex flex-col flex-1">
+                      {/* Profile Section */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="relative">
+                          <img
+                            src={review.image}
+                            alt={review.name}
+                            className="w-12 h-12 rounded-full object-cover border-2 border-violet-500/50"
+                          />
+                          <a
+                            href={review.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors shadow-lg"
+                          >
+                            <Linkedin className="w-3 h-3 text-white" />
+                          </a>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-sm text-foreground group-hover:text-violet-400 transition-colors truncate">
+                            {review.name}
+                          </h4>
+                          <p className="text-xs text-muted-foreground truncate">{review.role}</p>
+                          <p className="text-xs text-muted-foreground truncate">{review.company}</p>
+                        </div>
+                      </div>
 
-            <div className="flex items-center gap-2">
-              {Array.from({ length: totalSlides }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentSlide
-                      ? "w-8 bg-violet-500"
-                      : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+                      {/* Rating */}
+                      <div className="flex items-center gap-0.5 mb-2">
+                        {Array.from({ length: review.rating }).map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-yellow-500 text-yellow-500" />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-xs text-muted-foreground leading-relaxed flex-1 line-clamp-6">
+                        "{review.review}"
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
-
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="h-10 w-10"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
           </div>
-
-          <p className="text-center text-xs text-muted-foreground mt-3">
-            Showing {currentSlide * reviewsPerSlide + 1}-
-            {Math.min((currentSlide + 1) * reviewsPerSlide, reviews.length)} of{" "}
-            {reviews.length} reviews
-          </p>
         </div>
       </div>
     </section>
