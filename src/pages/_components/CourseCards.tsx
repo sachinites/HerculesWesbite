@@ -314,7 +314,7 @@ const networkingCourses: Course[] = [
     description: "NAT, PAT, DHCP, Tunneling, IP Fragmentation, ACLs, Route-Maps, Policy Based Routing, IPV6 Basics",
     category: "network",
     price: "$10",
-    rating: 6.0,
+    rating: 4.6,
     students: "84",
     duration: "4h",
     url: "https://www.csepracticals.com/nw2/",

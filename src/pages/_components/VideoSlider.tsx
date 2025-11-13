@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 
@@ -124,8 +124,31 @@ export default function VideoSlider() {
   };
 
   const closePlayer = () => {
+    // Stop the video by clearing the playingVideoId
+    // This will unmount the iframe and stop playback
     setPlayingVideoId(null);
   };
+
+  // Prevent body scrolling when modal is open on mobile
+  useEffect(() => {
+    if (playingVideoId) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Restore scroll position when modal closes
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [playingVideoId]);
 
   return (
     <section id="recent-updates" className="px-4 py-16 sm:px-6 lg:px-8 bg-card/50 backdrop-blur-sm relative overflow-hidden">
@@ -137,34 +160,44 @@ export default function VideoSlider() {
       {/* YouTube Player Modal */}
       {playingVideoId && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm" 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm" 
           onClick={closePlayer}
-          style={{ WebkitOverflowScrolling: 'touch' }}
+          style={{ WebkitOverflowScrolling: 'touch', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <div 
-            className="relative w-full max-w-6xl mx-4 px-4" 
+            className="relative w-full h-full md:h-auto md:max-w-6xl md:mx-4 md:px-4 px-2 flex flex-col md:block items-center justify-center" 
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closePlayer}
-              className="absolute -top-12 right-4 text-white hover:text-primary transition-colors z-10"
+              className="absolute top-4 right-4 md:-top-12 md:right-4 text-white hover:text-red-400 transition-colors z-20 bg-black/80 hover:bg-red-600/80 rounded-full p-2 md:p-3 shadow-lg border-2 border-white/20 hover:border-red-400/50"
               aria-label="Close video"
             >
-              <X className="h-8 w-8" />
+              <X className="h-6 w-6 md:h-8 md:w-8" />
             </button>
-            <div className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
               <iframe
+                key={playingVideoId}
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/embed/${playingVideoId}?autoplay=1&playsinline=1`}
+                src={`https://www.youtube.com/embed/${playingVideoId}?autoplay=1&playsinline=1&controls=1&rel=0&modestbranding=1&enablejsapi=1&iv_load_policy=3&fs=1&cc_load_policy=0`}
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                 allowFullScreen
                 className="absolute inset-0 w-full h-full"
                 style={{ border: 'none' }}
-                loading="lazy"
+                frameBorder="0"
+                loading="eager"
               />
             </div>
+            {/* Cancel button below video for better visibility */}
+            <button
+              onClick={closePlayer}
+              className="mt-4 md:mt-6 w-full md:w-auto md:mx-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors z-20 flex items-center justify-center gap-2"
+            >
+              <X className="h-5 w-5" />
+              Cancel / Close Video
+            </button>
           </div>
         </div>
       )}

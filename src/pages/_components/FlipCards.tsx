@@ -222,7 +222,7 @@ export default function FlipCards() {
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center justify-center gap-2">
                         <span className="text-emerald-400 text-sm flex-shrink-0">✓</span>
-                        <span>5 Free Courses</span>
+                        <span>4 Free Courses</span>
                       </div>
                       <div className="flex items-center justify-center gap-2">
                         <span className="text-emerald-400 text-sm flex-shrink-0">✓</span>
@@ -384,16 +384,16 @@ export default function FlipCards() {
           <div className="perspective-1000 w-full max-w-md h-[320px] flip-card">
             <div className="flip-card-inner">
               {/* Front */}
-              <Card className="flip-card-front border-4 border-amber-400 shadow-2xl shadow-amber-400/50 bg-card p-4 flex items-center justify-center overflow-hidden" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-                <div className="text-center w-full relative" style={{ isolation: 'isolate' }}>
-                  <div className="relative flex items-center justify-center mb-2" style={{ zIndex: 1 }}>
-                    <div className="absolute h-16 w-16 rounded-full bg-amber-400/25 blur-xl animate-pulse" style={{ zIndex: 0 }} />
-                    <div className="sparkle-orbit absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20" style={{ zIndex: 1 }}>
-                      <span className="absolute left-1/2 -translate-x-1/2 -top-0.5 text-base text-amber-50/90">✨</span>
+              <Card className="flip-card-front border-4 border-amber-400 shadow-2xl shadow-amber-400/50 bg-card p-4 flex items-center justify-center overflow-hidden" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(0deg)' }}>
+                <div className="text-center w-full relative" style={{ isolation: 'isolate', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+                  <div className="relative flex items-center justify-center mb-2" style={{ zIndex: 1, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+                    <div className="absolute h-16 w-16 rounded-full bg-amber-400/25 blur-xl animate-pulse" style={{ zIndex: 0, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }} />
+                    <div className="sparkle-orbit absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20" style={{ zIndex: 1, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+                      <span className="absolute left-1/2 -translate-x-1/2 -top-0.5 text-base text-amber-50/90" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>✨</span>
                     </div>
-                    <div className="relative trophy-glow flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-amber-300 via-amber-400 to-orange-500 text-3xl shadow-[0_0_25px_rgba(251,191,36,0.55)]" style={{ zIndex: 2 }}>
-                      🏆
-                      <span className="absolute -top-0.5 -right-0.5 text-sm text-amber-100/90 animate-ping">✨</span>
+                    <div className="relative trophy-glow flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-amber-300 via-amber-400 to-orange-500 text-3xl shadow-[0_0_25px_rgba(251,191,36,0.55)]" style={{ zIndex: 2, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+                      <span style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>🏆</span>
+                      <span className="absolute -top-0.5 -right-0.5 text-sm text-amber-100/90 animate-ping" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>✨</span>
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-amber-400">
@@ -424,8 +424,8 @@ export default function FlipCards() {
               </Card>
 
               {/* Back */}
-              <Card className="flip-card-back border-4 border-amber-400 shadow-2xl shadow-amber-400/50 bg-gradient-to-br from-amber-400/30 to-amber-400/10 p-6 flex items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-                  <div className="text-center" style={{ isolation: 'isolate' }}>
+              <Card className="flip-card-back border-4 border-amber-400 shadow-2xl shadow-amber-400/50 bg-gradient-to-br from-amber-400/30 to-amber-400/10 p-6 flex items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                  <div className="text-center" style={{ isolation: 'isolate', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
                   <div className="text-5xl font-bold text-amber-400 mb-4">$120</div>
                   <p className="text-muted-foreground mb-6 text-sm">One-time payment</p>
                   <a

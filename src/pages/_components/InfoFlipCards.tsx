@@ -81,6 +81,9 @@ export default function InfoFlipCards() {
                     "Not a Data Structure and Algorithm Learning Site",
                     "Not a leet code or similar Website",
                     "Only for development projects for System programmers",
+                    "We assume you are decent with commonly used Data-Structures and Algorithms",
+                    "You have a control on Pointers in C/C++",
+                    "Our Coding Courses are not for absolute Beginners",
                   ].map((item, index) => (
                     <li
                       key={index}
