@@ -16,18 +16,24 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="https://www.youtube.com/@CSEPracticals"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <Youtube className="h-5 w-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/abhishekiit/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/sachinites/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <Github className="h-5 w-5" />
@@ -40,22 +46,22 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="https://home.csepracticals.com/" className="hover:text-foreground transition-colors">
+                <a href="https://home.csepracticals.com/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="https://home.csepracticals.com/" className="hover:text-foreground transition-colors">
+                <a href="https://home.csepracticals.com/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Courses
                 </a>
               </li>
               <li>
-                <a href="https://www.csepracticals.com/about-us/" className="hover:text-foreground transition-colors">
+                <a href="https://www.csepracticals.com/about-us/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="https://www.csepracticals.com/contact-us/" className="hover:text-foreground transition-colors">
+                <a href="https://www.csepracticals.com/contact-us/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Contact
                 </a>
               </li>
@@ -67,22 +73,22 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="https://www.csepracticals.com/blog/" className="hover:text-foreground transition-colors">
-                  Blog
+                <a href="https://www.csepracticals.com/blog/in-what-order-should-one-do-csepracticals-courses/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  Learning Sequence
                 </a>
               </li>
               <li>
-                <a href="https://www.csepracticals.com/faqs/" className="hover:text-foreground transition-colors">
+                <a href="https://www.csepracticals.com/faqs/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="https://www.csepracticals.com/refund/" className="hover:text-foreground transition-colors">
+                <a href="https://www.csepracticals.com/refund/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Refund Policy
                 </a>
               </li>
               <li>
-                <a href="https://www.csepracticals.com/terms-condn/" className="hover:text-foreground transition-colors">
+                <a href="https://www.csepracticals.com/terms-condn/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Terms and Conditions
                 </a>
               </li>

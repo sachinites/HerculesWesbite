@@ -26,7 +26,7 @@ export default function InfoFlipCards() {
 
               {/* Back Side */}
               <Card className="flip-card-back flex flex-col p-8 bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border-2 border-cyan-500/50 shadow-xl shadow-cyan-500/20 overflow-y-auto">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-6 text-center">
+                <h3 className="text-2xl font-bold text-cyan-400 mb-6 text-left">
                   Exclusively for Developers
                 </h3>
                 <ul className="space-y-3 flex-1">
@@ -71,11 +71,11 @@ export default function InfoFlipCards() {
               </Card>
 
               {/* Back Side */}
-              <Card className="flip-card-back flex flex-col p-8 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-500/50 shadow-xl shadow-amber-500/20 overflow-y-auto">
-                <h3 className="text-2xl font-bold text-amber-400 mb-6 text-center">
+              <Card className="flip-card-back flex flex-col p-8 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-500/50 shadow-xl shadow-amber-500/20 overflow-y-auto text-left">
+                <h3 className="text-2xl font-bold text-amber-400 mb-6 text-left">
                   Before You Start
                 </h3>
-                <ul className="space-y-4 flex-1">
+                <ul className="space-y-4 flex-1 text-left">
                   {[
                     "Must know basic C or C++ or any programming language",
                     "Not a Data Structure and Algorithm Learning Site",
@@ -87,10 +87,10 @@ export default function InfoFlipCards() {
                   ].map((item, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-3 text-foreground"
+                      className="flex items-start gap-3 text-foreground text-left"
                     >
                       <span className="mt-1.5 h-2 w-2 rounded-full bg-amber-500 flex-shrink-0" />
-                      <span className="text-base">{item}</span>
+                      <span className="text-base text-left">{item}</span>
                     </li>
                   ))}
                 </ul>
