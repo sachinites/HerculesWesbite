@@ -1,6 +1,5 @@
 import Navigation from "./_components/Navigation.tsx";
 import Hero from "./_components/Hero.tsx";
-import SignInSection from "./_components/SignInSection.tsx";
 import TelegramBanner from "./_components/TelegramBanner.tsx";
 import Roadmap from "./_components/Roadmap.tsx";
 import VideoSlider from "./_components/VideoSlider.tsx";
@@ -22,7 +21,6 @@ export default function Index() {
       
       <main>
         <Hero />
-        <SignInSection />
         <TelegramBanner />
         <InfoFlipCards />
         <Roadmap />

@@ -253,12 +253,32 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all hover:scale-105"
+              <a
+                href="https://www.csepracticals.com/appointments"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:inline-flex"
               >
-                Start Learning
-              </Button>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 hover:from-amber-300 hover:to-orange-400 text-white shadow-lg shadow-orange-500/40 hover:shadow-xl hover:shadow-orange-500/60 transition-all hover:scale-105"
+                >
+                  Book an Appointment
+                </Button>
+              </a>
+              <a
+                href="https://www.csepracticals.com/appointments"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:hidden inline-flex"
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 hover:from-amber-300 hover:to-orange-400 text-white shadow-lg shadow-orange-500/40 hover:shadow-xl hover:shadow-orange-500/60 transition-all hover:scale-105 w-full"
+                >
+                  Book an Appointment
+                </Button>
+              </a>
               <Button 
                 size="lg" 
                 variant="secondary" 

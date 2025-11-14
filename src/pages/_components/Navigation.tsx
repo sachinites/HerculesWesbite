@@ -18,17 +18,14 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 border-b border-primary/30 backdrop-blur-md shadow-lg shadow-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-chart-2 to-primary bg-clip-text text-transparent">CSEPracticals</span>
-          </div>
+          <div className="flex items-center gap-8 flex-1">
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-chart-2 to-primary bg-clip-text text-transparent whitespace-nowrap">
+              CSEPracticals
+            </span>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-4 flex items-center space-x-6">
-              <button
-                onClick={() => scrollToSection("courses")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
+              <button onClick={() => scrollToSection("courses")} className="text-foreground hover:text-primary transition-colors">
                 Courses
               </button>
               <a
@@ -223,25 +220,37 @@ export default function Navigation() {
                 )}
               </div>
 
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-foreground hover:text-primary transition-colors"
-              >
+              <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors">
                 Contact Us
               </button>
             </div>
           </div>
 
-
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-foreground"
+          {/* Right-side actions */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.csepracticals.com/login/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center justify-center px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 shadow-lg shadow-amber-500/50 hover:shadow-amber-500/80 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+              Sign In
+            </a>
+
+            {/* Mobile sign in + menu */}
+            <div className="md:hidden flex items-center gap-3">
+              <a
+                href="https://www.csepracticals.com/login/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 shadow-md shadow-amber-500/40"
+              >
+                Sign In
+              </a>
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-foreground">
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -282,7 +291,14 @@ export default function Navigation() {
             >
               Contact Us
             </button>
-
+            <a
+              href="https://www.csepracticals.com/login/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-left px-3 py-2 hover:bg-amber-500/10 rounded-md text-amber-500 font-semibold"
+            >
+              Sign In
+            </a>
           </div>
         </div>
       )}

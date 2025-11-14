@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Star, Clock, Users, ChevronLeft, ChevronRight } from "lucide-react";
 
+const BEST_SELLER_TAG = "__BEST_SELLER__";
+
 interface Course {
   id: number;
   title: string;
@@ -15,7 +17,11 @@ interface Course {
   contents?: string[];
   category: "system" | "network";
   tags?: string[];
+  bestSeller?: boolean;
 }
+
+const SYSTEM_DEFAULT_TAGS = ["C/C++", "Linux", "System", "Projects"];
+const NETWORK_DEFAULT_TAGS = ["TCP/IP", "Sockets", "Protocols", "Network"];
 
 const systemProgrammingCourses: Course[] = [
   {
@@ -29,6 +35,7 @@ const systemProgrammingCourses: Course[] = [
     url: "https://www.csepracticals.com/alpc/",
     category: "system",
     tags: ["C/C++", "Linux", "Makefile", "Memory"],
+    bestSeller: true,
     contents: [
       "Learn Advance Programming Concepts in C/C++",
       "Automate Build Process using Makefile",
@@ -73,6 +80,7 @@ const systemProgrammingCourses: Course[] = [
     duration: "17h",
     url: "https://www.csepracticals.com/mt/",
     tags: ["Pthreads", "Mutex", "Sync", "C/C++"],
+    bestSeller: true,
     contents: [
       "Mutual Exclusion Vs Atomocity", 
       "Writing Thread Safe Codes", 
@@ -157,6 +165,7 @@ const systemProgrammingCourses: Course[] = [
     students: "9.4k",
     duration: "8.5h",
     url: "https://www.csepracticals.com/ipc/",
+    bestSeller: true,
     contents: [
       "Linux IPC programming interface", 
       "Prepare for IPC based interview Questions", 
@@ -236,7 +245,8 @@ const systemProgrammingCourses: Course[] = [
       "Catch Memory Leaks",
       "track the Objects malloc'd by the application",
       "See Memory Usage and statistics"
-     ]
+     ],
+    bestSeller: true,
   },
   {
     id: 12,
@@ -360,7 +370,8 @@ const networkingCourses: Course[] = [
       "Flow control and Window Mechanism", 
       "Difference between Byte oriented and datagram oriented protocols", 
       "Understand TCP graphs"
-    ]
+    ],
+    bestSeller: true,
   },
   {
     id: 20,
@@ -381,7 +392,8 @@ const networkingCourses: Course[] = [
       "Writing Custom CLI commands",
       "Implement Routing and Switching Algorithms",
       "Implement Vlan-based Routing"
-    ]
+    ],
+    bestSeller: true,
   },
   {
     id: 21,
@@ -420,7 +432,8 @@ const networkingCourses: Course[] = [
       "Implement complex protocol state machines", 
       "Implement complex Network Algorithms", 
       "experience of end-to-end implementation of a typical network protocol"
-    ]
+    ],
+    bestSeller: true,
   },
   {
     id: 23,
@@ -458,7 +471,8 @@ const networkingCourses: Course[] = [
       "ARP, ICMP, DNS",
       "IP Subnet, Socket Programming",
       "L3 Forwarding, How Routing Protocol Works"
-    ]
+    ],
+    bestSeller: true,
   },
   {
     id: 25,
@@ -512,6 +526,15 @@ const networkingCourses: Course[] = [
     ]
   },
 ];
+
+const getDefaultTags = (course: Course) =>
+  course.category === "system" ? SYSTEM_DEFAULT_TAGS : NETWORK_DEFAULT_TAGS;
+
+const getDisplayTags = (course: Course, limit = 4) => {
+  const baseTags = course.tags && course.tags.length ? course.tags : getDefaultTags(course);
+  const tagsWithSpecial = course.bestSeller ? [BEST_SELLER_TAG, ...baseTags] : baseTags;
+  return tagsWithSpecial.slice(0, limit);
+};
 
 interface CategorySectionProps {
   title: string;
@@ -682,16 +705,24 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
 
                           {/* Tags */}
                           <div className="flex flex-wrap gap-1 mb-2 mt-auto">
-                            {(course.tags || (course.category === "system" ? ["C/C++", "Linux", "System", "Projects"] : ["TCP/IP", "Sockets", "Protocols", "Network"])).slice(0, 4).map((tag, idx) => {
+                            {getDisplayTags(course).map((tag, idx) => {
                               const colors = [
                                 "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
                                 "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
                                 "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
                                 "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20"
                               ];
+                              const isBestSellerTag = tag === BEST_SELLER_TAG;
                               return (
-                                <span key={idx} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${colors[idx % 4]}`}>
-                                  {tag}
+                                <span
+                                  key={`${course.id}-tag-${idx}`}
+                                  className={
+                                    isBestSellerTag
+                                      ? "px-3 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white border border-amber-200 shadow-[0_0_12px_rgba(251,191,36,0.6)] animate-pulse"
+                                      : `px-2 py-0.5 rounded-full text-[10px] font-semibold border ${colors[idx % colors.length]}`
+                                  }
+                                >
+                                  {isBestSellerTag ? "Best Seller" : tag}
                                 </span>
                               );
                             })}
@@ -846,22 +877,30 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
                           </div>
                         </div>
 
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-1 mb-2 mt-auto">
-                          {(course.tags || (course.category === "system" ? ["C/C++", "Linux", "System", "Projects"] : ["TCP/IP", "Sockets", "Protocols", "Network"])).slice(0, 4).map((tag, idx) => {
-                            const colors = [
-                              "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-                              "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
-                              "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
-                              "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20"
-                            ];
-                            return (
-                              <span key={idx} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${colors[idx % 4]}`}>
-                                {tag}
-                              </span>
-                            );
-                          })}
-                        </div>
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1 mb-2 mt-auto">
+                        {getDisplayTags(course).map((tag, idx) => {
+                          const colors = [
+                            "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+                            "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+                            "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+                            "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20"
+                          ];
+                          const isBestSellerTag = tag === BEST_SELLER_TAG;
+                          return (
+                            <span
+                              key={`${course.id}-grid-tag-${idx}`}
+                              className={
+                                isBestSellerTag
+                                  ? "px-3 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white border border-amber-200 shadow-[0_0_12px_rgba(251,191,36,0.6)] animate-pulse"
+                                  : `px-2 py-0.5 rounded-full text-[10px] font-semibold border ${colors[idx % colors.length]}`
+                              }
+                            >
+                              {isBestSellerTag ? "Best Seller" : tag}
+                            </span>
+                          );
+                        })}
+                      </div>
                       </CardContent>
 
                       <CardFooter className="p-2 pt-0">
@@ -934,7 +973,7 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
                     <h4 className="text-sm font-bold text-foreground break-words">
                       {course.title}
                     </h4>
-                    <div className="flex items-center gap-2 mt-1.5 text-xs">
+                    <div className="flex items-center gap-2 mt-1.5 text-xs flex-wrap">
                       <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-gradient-to-br from-yellow-400/20 to-orange-400/20 text-yellow-700 dark:text-yellow-300 border border-yellow-400/30">
                         <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
                         <span className="font-bold">{course.rating}</span>
@@ -944,6 +983,11 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
                         <span className="font-bold">{course.students}</span>
                       </div>
                       <span className="font-black text-primary">{course.price}</span>
+                      {course.bestSeller && (
+                        <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white text-[10px] font-bold tracking-wide shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                          Best Seller
+                        </span>
+                      )}
                     </div>
                   </div>
                   <ChevronRight
@@ -958,7 +1002,7 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
                     <p className="text-sm text-muted-foreground pt-3">
                       {course.description}
                     </p>
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-xs flex-wrap">
                       <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-br from-purple-400/20 to-pink-400/20 text-purple-700 dark:text-purple-300 border border-purple-400/30">
                         <Clock className="w-3.5 h-3.5" />
                         <span className="font-bold">{course.duration}</span>
@@ -967,6 +1011,11 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
                         <Users className="w-3.5 h-3.5" />
                         <span className="font-bold">{course.students}</span>
                       </div>
+                      {course.bestSeller && (
+                        <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white text-[10px] font-bold shadow-[0_0_10px_rgba(251,191,36,0.6)] animate-pulse">
+                          Best Seller
+                        </span>
+                      )}
                     </div>
                     <a
                       href={course.url}
@@ -1020,6 +1069,8 @@ function CategorySection({ title, courses, icon }: CategorySectionProps) {
 }
 
 export default function CourseCards() {
+  const [isCompactView, setIsCompactView] = useState(false);
+
   return (
     <section id="courses" className="py-16 px-6 bg-background">
       <div className="max-w-full mx-auto">
@@ -1032,18 +1083,157 @@ export default function CourseCards() {
           </p>
         </div>
 
-        <CategorySection
-          title="System Programming (15 Courses)"
-          courses={systemProgrammingCourses}
-          icon="⚙️"
-        />
+        <div className="hidden md:flex items-center justify-end gap-3 mb-8">
+          <span className="text-sm text-muted-foreground">
+            {isCompactView ? "Compact list view enabled" : "Interactive slider view"}
+          </span>
+          <button
+            onClick={() => setIsCompactView((prev) => !prev)}
+            className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors ${
+              isCompactView ? "bg-primary" : "bg-muted"
+            }`}
+            aria-label="Toggle compact list view"
+          >
+            <span
+              className={`inline-block h-6 w-6 transform rounded-full bg-white transition ${
+                isCompactView ? "translate-x-8" : "translate-x-1"
+              }`}
+            />
+          </button>
+        </div>
 
-        <CategorySection
-          title="Networking (11 Courses)"
-          courses={networkingCourses}
-          icon="🌐"
-        />
+        {!isCompactView && (
+          <>
+            <CategorySection
+              title="System Programming (15 Courses)"
+              courses={systemProgrammingCourses}
+              icon="⚙️"
+            />
+
+            <CategorySection
+              title="Networking (11 Courses)"
+              courses={networkingCourses}
+              icon="🌐"
+            />
+          </>
+        )}
+
+        {isCompactView && (
+          <>
+            <div className="hidden md:grid grid-cols-2 gap-6">
+              <CompactCourseColumn title="System Programming" icon="⚙️" courses={systemProgrammingCourses} />
+              <CompactCourseColumn title="Networking" icon="🌐" courses={networkingCourses} />
+            </div>
+
+            <div className="md:hidden space-y-8">
+              <CategorySection
+                title="System Programming (15 Courses)"
+                courses={systemProgrammingCourses}
+                icon="⚙️"
+              />
+              <CategorySection
+                title="Networking (11 Courses)"
+                courses={networkingCourses}
+                icon="🌐"
+              />
+            </div>
+          </>
+        )}
       </div>
     </section>
+  );
+}
+
+interface CompactColumnProps {
+  title: string;
+  icon: string;
+  courses: Course[];
+}
+
+function CompactCourseColumn({ title, icon, courses }: CompactColumnProps) {
+  return (
+    <div className="bg-card/60 border border-border rounded-2xl p-5 shadow-xl shadow-primary/10 flex flex-col h-[75vh]">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">{icon}</span>
+          <div>
+            <h3 className="text-xl font-bold text-foreground">{title}</h3>
+            <p className="text-xs text-muted-foreground">{courses.length} courses</p>
+          </div>
+        </div>
+        <span className="text-xs uppercase tracking-wide text-muted-foreground">Compact view</span>
+      </div>
+
+      <div className="flex-1 overflow-y-auto pr-2 space-y-3">
+        {courses.map((course, index) => {
+          const normalizedPrice = course.price.replace(/[^\dA-Za-z]/g, "").toLowerCase();
+          const isFree = normalizedPrice === "" || normalizedPrice === "0" || normalizedPrice.includes("free");
+          const cardColors = [
+            "from-rose-500/10 to-orange-500/10 border-rose-400/40 hover:border-rose-400",
+            "from-blue-500/10 to-cyan-500/10 border-blue-400/40 hover:border-blue-400",
+            "from-violet-500/10 to-fuchsia-500/10 border-violet-400/40 hover:border-violet-400",
+            "from-emerald-500/10 to-teal-500/10 border-emerald-400/40 hover:border-emerald-400"
+          ];
+          const colorClass = cardColors[index % cardColors.length];
+
+          return (
+          <a
+            key={course.id}
+            href={course.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block rounded-xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl bg-gradient-to-br ${colorClass} ${
+              isFree
+                ? "border-orange-400/80 shadow-orange-400/30"
+                : "shadow-primary/20"
+            }`}
+          >
+            <div className="flex items-start gap-3">
+              <div className={`text-sm font-black w-8 ${isFree ? "text-orange-500" : "text-muted-foreground"}`}>
+                #{index + 1}
+              </div>
+              <div className="flex-1 space-y-2">
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground">{course.title}</h4>
+                  <p className="text-xs text-muted-foreground line-clamp-2">{course.description}</p>
+                </div>
+                <div className="flex flex-wrap gap-4 text-[11px] font-semibold">
+                  <span className={`${isFree ? "text-orange-500" : "text-muted-foreground"}`}>⭐ {course.rating}</span>
+                  <span className={`${isFree ? "text-orange-500" : "text-muted-foreground"}`}>👥 {course.students}</span>
+                  <span className={`${isFree ? "text-orange-500" : "text-muted-foreground"}`}>⏱ {course.duration}</span>
+                  {isFree && (
+                    <span className="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-600 border border-orange-400/40 text-[10px] font-bold tracking-wide">
+                      FREE COURSE
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {getDisplayTags(course, 3).map((tag, i) => {
+                    const isBestSellerTag = tag === BEST_SELLER_TAG;
+                    return (
+                      <span
+                        key={`${course.id}-compact-tag-${i}`}
+                        className={
+                          isBestSellerTag
+                            ? "px-3 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white border border-amber-200 shadow-[0_0_12px_rgba(251,191,36,0.6)] animate-pulse"
+                            : `px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                                isFree
+                                  ? "bg-orange-500/15 text-orange-500 border-orange-400/30"
+                                  : "bg-white/40 text-foreground border-white/60"
+                              }`
+                        }
+                      >
+                        {isBestSellerTag ? "Best Seller" : tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </a>
+        );
+        })}
+      </div>
+    </div>
   );
 }
