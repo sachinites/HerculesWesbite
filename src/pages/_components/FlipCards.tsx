@@ -70,7 +70,10 @@ export default function FlipCards() {
               {/* Back */}
               <Card className="flip-card-back border-2 border-amber-400/70 shadow-xl shadow-amber-400/30 bg-gradient-to-br from-amber-400/20 to-amber-400/5 p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-7xl font-bold text-amber-400 mb-6">$120/INR9900</div>
+                  <div className="text-7xl font-bold text-amber-400 mb-6 leading-tight text-center">
+                    <span className="block md:inline">$120</span>
+                    <span className="block md:inline">/INR9900</span>
+                  </div>
                   <p className="text-muted-foreground mb-8 text-lg">One-time payment</p>
                   <a
                     href="https://www.csepracticals.com/jackpot/"
@@ -101,10 +104,10 @@ export default function FlipCards() {
                 {/* Front */}
                 <Card className="flip-card-front border-2 border-rose-400/70 shadow-lg shadow-rose-400/30 bg-card p-6 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-2">
-                    <h3 className="text-xl font-bold mb-3 text-rose-400 line-clamp-2">
+                    <h3 className="text-xl font-bold mb-3 text-rose-400">
                       🚀 System Programming Bundle
                     </h3>
-                    <p className="text-muted-foreground mb-4 text-sm line-clamp-2">
+                    <p className="text-muted-foreground mb-4 text-sm">
                       System programming and Linux Development in C/C++
                     </p>
                     <div className="space-y-2 text-xs">
@@ -131,7 +134,10 @@ export default function FlipCards() {
                 {/* Back */}
                 <Card className="flip-card-back border-2 border-rose-400/70 shadow-lg shadow-rose-400/30 bg-gradient-to-br from-rose-400/20 to-rose-400/5 p-6 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-2">
-                    <div className="text-5xl font-bold text-rose-400 mb-4">$60/INR5200</div>
+                    <div className="text-5xl font-bold text-rose-400 mb-4 leading-tight text-center">
+                      <span className="block md:inline">$60</span>
+                      <span className="block md:inline">/INR5200</span>
+                    </div>
                     <p className="text-muted-foreground text-sm mb-5">One-time payment</p>
                     <a
                       href="https://www.csepracticals.com/course-detail/sysprog-bundle/6292/"
@@ -157,10 +163,10 @@ export default function FlipCards() {
                 {/* Front */}
                 <Card className="flip-card-front border-2 border-teal-400/70 shadow-lg shadow-teal-400/30 bg-card p-6 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-2">
-                    <h3 className="text-xl font-bold mb-3 text-teal-400 line-clamp-2">
+                    <h3 className="text-xl font-bold mb-3 text-teal-400">
                       🌐 Networking Bundle
                     </h3>
-                    <p className="text-muted-foreground mb-4 text-sm line-clamp-2">
+                    <p className="text-muted-foreground mb-4 text-sm">
                       Networking protocols and Programming
                     </p>
                     <div className="space-y-2 text-xs">
@@ -187,7 +193,10 @@ export default function FlipCards() {
                 {/* Back */}
                 <Card className="flip-card-back border-2 border-teal-400/70 shadow-lg shadow-teal-400/30 bg-gradient-to-br from-teal-400/20 to-teal-400/5 p-6 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-2">
-                    <div className="text-5xl font-bold text-teal-400 mb-4">$60/INR5200</div>
+                    <div className="text-5xl font-bold text-teal-400 mb-4 leading-tight text-center">
+                      <span className="block md:inline">$60</span>
+                      <span className="block md:inline">/INR5200</span>
+                    </div>
                     <p className="text-muted-foreground text-sm mb-5">One-time payment</p>
                     <a
                       href="https://www.csepracticals.com/course-detail/networking-courses-bundle/6340/"
@@ -216,7 +225,7 @@ export default function FlipCards() {
                     <h3 className="text-xl font-bold mb-3 text-emerald-400">
                       🎁 Free Package
                     </h3>
-                    <p className="text-muted-foreground mb-4 text-sm line-clamp-2">
+                    <p className="text-muted-foreground mb-4 text-sm">
                       Get started with free courses
                     </p>
                     <div className="space-y-2 text-xs">
@@ -279,10 +288,10 @@ export default function FlipCards() {
                 {/* Front */}
                 <Card className="flip-card-front border-2 border-rose-400/70 shadow-lg shadow-rose-400/30 bg-card p-3 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-1">
-                    <h3 className="text-base font-bold mb-2 text-rose-400 line-clamp-2">
+                    <h3 className="text-base font-bold mb-2 text-rose-400">
                       🚀 System Programming
                     </h3>
-                    <p className="text-muted-foreground mb-2 text-[10px] line-clamp-2">
+                    <p className="text-muted-foreground mb-2 text-[10px]">
                       System programming and Linux
                     </p>
                     <div className="space-y-1.5 text-[10px]">
@@ -300,9 +309,12 @@ export default function FlipCards() {
 
                 {/* Back */}
                 <Card className="flip-card-back border-2 border-rose-400/70 shadow-lg shadow-rose-400/30 bg-gradient-to-br from-rose-400/20 to-rose-400/5 p-3 flex items-center justify-center overflow-hidden">
-                  <div className="text-center w-full px-1">
-                    <div className="text-2xl font-bold text-rose-400 mb-2">$60/INR5200</div>
-                    <p className="text-muted-foreground text-[10px] mb-3">One-time</p>
+                  <div className="text-center w-full px-1 flex flex-col items-center justify-center h-full space-y-2">
+                    <div className="text-2xl font-bold text-rose-400 mb-2 leading-tight text-center">
+                      <span className="block md:inline">$60</span>
+                      <span className="block md:inline">/INR5200</span>
+                    </div>
+                    <p className="text-muted-foreground text-[10px]">One-time</p>
                     <a
                       href="https://www.csepracticals.com/course-detail/sysprog-bundle/6292/"
                       target="_blank"
@@ -327,10 +339,10 @@ export default function FlipCards() {
                 {/* Front */}
                 <Card className="flip-card-front border-2 border-teal-400/70 shadow-lg shadow-teal-400/30 bg-card p-3 flex items-center justify-center overflow-hidden">
                   <div className="text-center w-full px-1">
-                    <h3 className="text-base font-bold mb-2 text-teal-400 line-clamp-2">
+                    <h3 className="text-base font-bold mb-2 text-teal-400">
                       🌐 Networking
                     </h3>
-                    <p className="text-muted-foreground mb-2 text-[10px] line-clamp-2">
+                    <p className="text-muted-foreground mb-2 text-[10px]">
                       Networking protocols
                     </p>
                     <div className="space-y-1.5 text-[10px]">
@@ -348,9 +360,12 @@ export default function FlipCards() {
 
                 {/* Back */}
                 <Card className="flip-card-back border-2 border-teal-400/70 shadow-lg shadow-teal-400/30 bg-gradient-to-br from-teal-400/20 to-teal-400/5 p-3 flex items-center justify-center overflow-hidden">
-                  <div className="text-center w-full px-1">
-                    <div className="text-2xl font-bold text-teal-400 mb-2">$60/INR5200</div>
-                    <p className="text-muted-foreground text-[10px] mb-3">One-time</p>
+                  <div className="text-center w-full px-1 flex flex-col items-center justify-center h-full space-y-2">
+                    <div className="text-2xl font-bold text-teal-400 mb-2 leading-tight text-center">
+                      <span className="block md:inline">$60</span>
+                      <span className="block md:inline">/INR5200</span>
+                    </div>
+                    <p className="text-muted-foreground text-[10px]">One-time</p>
                     <a
                       href="https://www.csepracticals.com/course-detail/networking-courses-bundle/6340/"
                       target="_blank"
